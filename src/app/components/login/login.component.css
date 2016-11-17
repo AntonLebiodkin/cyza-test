@@ -1,0 +1,14 @@
+.jumbotron {
+    background:  url(app/components/login/img/mountain.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.login-panel {
+    margin-top: 5em;
+}

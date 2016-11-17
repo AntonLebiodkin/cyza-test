@@ -1,0 +1,39 @@
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title text-center">Profile</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <button class="btn btn-default pull-right col-xs-2 col-md-1 col-lg-1" [routerLink]="['/login']">   Logout   </button>
+      <div class="col-xs-2 col-md-1 col-lg-1 pull-right"></div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-xs-6">
+        <div class="user" style="background-image:url('http://iconizer.net/files/Practika/orig/user.png')"></div>
+      </div>
+      <div class="col-md-4 col-xs-6">
+        <h3>{{userProfile.firstName}} {{userProfile.lastName}}</h3>
+        <p>{{userProfile.address}}</p>
+        <p>{{userProfile.address}}</p>
+        <p>{{userProfile.website}}</p>
+      </div>
+      <div class="col-md-4 col-xs-12" id="rating">
+        <rating [(ngModel)]="starsCount"
+                [max]="5"
+                [readonly]="true"
+                [float]="true"
+                [titles]="['one', 'two', 'three', 'four', 'five']">
+        </rating>
+      </div>
+      <div class="col-xs-1 col-md-1 col-lg-1"></div>
+    </div>
+    <hr>
+    <ul class="nav nav-pills">
+      <li role="presentation" [routerLinkActive]="['active']"><a [routerLink]="['info']">About</a></li>
+      <li role="presentation" [routerLinkActive]="['active']"><a [routerLink]="['settings']">Settings</a></li>
+    </ul>
+  </div>
+</div>
+
