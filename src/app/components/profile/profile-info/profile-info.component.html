@@ -1,3 +1,23 @@
-<p>
-  profile-info works!
-</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div *ngIf="userProfile" class="row">
+      <div class="col-md-4 col-xs-6">
+        <h3>{{userProfile.firstName}} {{userProfile.lastName}}</h3>
+        <span><img src="../icons/svg/phone-call.svg" class="icon pull-left"></span><p class="pull-left">{{userProfile.phone}}</p>
+        <br>
+        <span><img src="../icons/svg/facebook-placeholder-for-locate-places-on-maps.svg" class="icon pull-left"></span><p class="pull-left">{{userProfile.website}}</p>
+      </div>
+      <div class="col-md-4 col-xs-12" id="rating">
+        <rating [(ngModel)]="userProfile.stars"
+                [max]="5"
+                [readonly]="true"
+                [float]="true"
+                [titles]="['one', 'two', 'three', 'four', 'five']">
+        </rating>
+        <h4>10 reviews</h4>
+      </div>
+      <div class="col-xs-1 col-md-1 col-lg-1"></div>
+    </div>
+  </div>
+</div>
+

@@ -14,6 +14,7 @@ import { RatingModule } from "ng2-rating";
 import { ProfileService } from "./services/profile.service";
 import { AuthService } from "./services/auth.service";
 import {AuthGuard} from "./guards/auth-guard.service";
+import {EqualValidator} from "./directives/validate-equal";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {AuthGuard} from "./guards/auth-guard.service";
     ProfileHeaderComponent,
     ProfileInfoComponent,
     ProfileSettingsComponent,
-    ProfileComponent
+    ProfileComponent,
+    EqualValidator
   ],
   imports: [
     BrowserModule,

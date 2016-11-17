@@ -9,9 +9,9 @@ import {Input} from "@angular/core/src/metadata/directives";
   styleUrls: ['./profile-header.component.css']
 })
 export class ProfileHeaderComponent{
-  @Input() userProfile: UserProfile;
-  starsCount: number = 4;
+  @Input() userProfile: UserProfile = null;
   constructor() { }
+
 
 
 

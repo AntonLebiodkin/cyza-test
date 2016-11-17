@@ -8,13 +8,15 @@ import { UserProfile } from "../../models/user-profile.model";
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-  userProfile: UserProfile;
+  userProfile: UserProfile = new UserProfile();
   constructor(private profileService: ProfileService) { }
 
   ngOnInit() {
+    console.log('profile init');
     this.profileService.getUserProfile()
                        .then(userProfile => {
                          this.userProfile = userProfile;
+                         console.log(this.userProfile.address);
                        })
   }
   ngOnDestroy() {
