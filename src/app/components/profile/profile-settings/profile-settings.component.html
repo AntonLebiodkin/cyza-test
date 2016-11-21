@@ -1,20 +1,38 @@
-<div class="form-group">
-  <label for="oldPassword">Old password</label>
-  <input type="password" class="form-control" id="oldPassword" placeholder="Old Password" name="oldPassword" required [(ngModel)]="passwords.oldPassword" #oldPassword="ngModel">
-  <div *ngIf="f.submitted && !username.valid" class="help-block error">Old password is required</div>
-</div>
-<div class="form-group">
-  <label for="password">Password</label>
-  <input type="password" class="form-control" id="password" placeholder="Password" name="password" required [(ngModel)]="passwords.newPassword" #newPassword="ngModel" >
-  <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-</div>
-<div class="form-group">
-  <label for="confirmPassword">Password</label>
-  <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm New Password" name="password" required validateEqual="newPassword" [(ngModel)]="passwords.confirmNewPasswrod" #confirmNewPassword="ngModel" >
-  <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-</div>
-<hr>
-<div class="form-group">
-  <button [disabled]="!f.valid" class="btn btn-primary">Change</button>
-  <!--<img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />-->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Change password</h3>
+  </div>
+  <div class="panel-body">
+    <form (ngSubmit)="changePassword(f.value)" #f="ngForm">
+      <br>
+      <div class="alert center-block alert-success col-xs-4 col-md-4 col-lg-4" *ngIf="success">
+        Success!
+      </div>
+      <div class="alert center-block alert-danger col-xs-4 col-md-4 col-lg-4" *ngIf="!!error">
+        {{ error }}
+      </div>
+      <br>
+      <br>
+      <div class="form-group">
+        <label for="oldPassword">Old password</label>
+        <input type="password" class="form-control" id="oldPassword" placeholder="Old Password" name="oldPassword" required [(ngModel)]="passwords.oldPassword" #oldPassword="ngModel">
+        <div *ngIf="f.submitted && !oldPassword.valid" class="help-block error">Old password is required</div>
+      </div>
+      <div class="form-group">
+        <label for="password">New Password</label>
+        <input type="password" class="form-control" id="password" placeholder="New Password" name="newPassword" required [(ngModel)]="passwords.newPassword" #newPassword="ngModel" >
+        <div *ngIf="f.submitted && !newPassword.valid" class="help-block">Password is required</div>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm New Password</label>
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm New Password" name="confirmNewPassword" required [(ngModel)]="passwords.confirmNewPassword" #confirmNewPassword="ngModel" >
+        <div *ngIf="f.submitted && !confirmNewPassword.valid" class="help-block">Password is required</div>
+      </div>
+      <hr>
+
+      <div class="form-group">
+        <button [disabled]="!f.valid" type="submit" class="btn btn-primary">Change</button>
+      </div>
+    </form>
+  </div>
 </div>

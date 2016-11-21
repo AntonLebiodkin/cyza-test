@@ -10,34 +10,37 @@ import {Subscription} from "rxjs";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
   user: User = new User();
-  loading = false;
   error: string = '';
-  subscription: Subscription;
-  constructor(private authService: AuthService, private router: Router) { }
+  apiError: boolean = false;
 
-  login(form: NgForm) {
-      this.loading = true;
-      this.subscription = this.authService.login(this.user.username, this.user.password)
-                              .subscribe(result => {
-                                console.log(result);
-                                if (result === true) {
-                                  // login successful
-                                  this.router.navigate(['/']);
-                                } else {
-                                  // login failed
-                                  this.error = 'Username or password is incorrect';
-                                  this.loading = false;
-                                }
-                              });
-}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) { }
+
   ngOnInit() {
+    //REMOVE TOKEN IF VISITED LOGIN PAGE
     this.authService.logout();
   }
 
-  ngOnDestroy() {
-    this.subscription = null;
+  login(form: NgForm) {
+      return  this.authService.login(this.user.username, this.user.password)
+                  .toPromise()
+                  .then(result => {
+                    console.log(result);
+                    if (result === true) {
+                      this.router.navigate(['/']);
+                    } else {
+                      this.error = 'Username or password is incorrect';
+                    }
+                  })
+                  .catch(this.handleApiError);
   }
 
+  private handleApiError(error: any): void {
+    this.apiError = true;
+    console.error('Api failed: ', error);
+  }
 }

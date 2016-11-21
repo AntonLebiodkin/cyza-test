@@ -7,9 +7,9 @@ import { PROFILE_ROUTES } from "./components/profile/profile-routing";
 import { AuthGuard } from "./guards/auth-guard.service";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/profile/info', pathMatch: 'full' },
+  { path: '', redirectTo: '/profile/info', pathMatch: 'full', canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
-  { path: 'profile', redirectTo: 'profile/info'},
+  { path: 'profile', redirectTo: 'profile/info', canActivate: [AuthGuard]},
   { path: 'profile', component: ProfileComponent, children: PROFILE_ROUTES, canActivate: [AuthGuard] },
 ];
 

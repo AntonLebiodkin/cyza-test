@@ -1,22 +1,27 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <div *ngIf="userProfile" class="row">
-      <div class="col-md-4 col-xs-6">
-        <h3>{{userProfile.firstName}} {{userProfile.lastName}}</h3>
+    <div *ngIf="loaded && userProfile" class="row">
+      <div class="col-md-4 col-xs-4">
+        <h4>{{userProfile.firstName}} {{userProfile.lastName}}</h4>
+        <span><img src="../icons/svg/house.svg" class="icon pull-left"><p class="pull-left">{{userProfile.address?.state}}, {{userProfile.address?.city}} {{userProfile.address?.zip}}</p></span>
+        <br>
+        <br>
         <span><img src="../icons/svg/phone-call.svg" class="icon pull-left"></span><p class="pull-left">{{userProfile.phone}}</p>
+        <br>
         <br>
         <span><img src="../icons/svg/facebook-placeholder-for-locate-places-on-maps.svg" class="icon pull-left"></span><p class="pull-left">{{userProfile.website}}</p>
       </div>
-      <div class="col-md-4 col-xs-12" id="rating">
+      <div class="col-md-4 col-xs-4" id="rating">
         <rating [(ngModel)]="userProfile.stars"
                 [max]="5"
                 [readonly]="true"
                 [float]="true"
                 [titles]="['one', 'two', 'three', 'four', 'five']">
         </rating>
-        <h4>10 reviews</h4>
+        <h4 *ngIf="userProfile.reviewsCount">{{userProfile.reviewsCount}} reviews</h4>
+        <h4 *ngIf="userProfile.followersCount">{{userProfile.followersCount}} followers</h4>
       </div>
-      <div class="col-xs-1 col-md-1 col-lg-1"></div>
+      <button class="btn btn-lg btn-warning pull-right service-button" [routerLink]="['edit']">Edit</button>
     </div>
   </div>
 </div>

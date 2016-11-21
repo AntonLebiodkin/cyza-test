@@ -1,0 +1,67 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Edit Your Profile</h3>
+  </div>
+  <div class="panel-body">
+    <form (ngSubmit)="editProfile(f.value)" #f="ngForm">
+      <div class="alert alert-danger col-xs-8 col-md-8 col-lg-8" *ngIf="success">
+        Success!
+      </div>
+      <div class="alert alert-danger col-xs-8 col-md-8 col-lg-8" *ngIf="!!error">
+        {{ error }}
+      </div>
+      <br>
+      <h4>Names</h4>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName" required [(ngModel)]="userProfile.firstName" #firstName="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName" required [(ngModel)]="userProfile.lastName" #lastName="ngModel" >
+      </div>
+      <hr>
+      <h4>Contacts</h4>
+      <div class="form-group">
+        <label for="website">Website</label>
+        <input type="text" class="form-control" id="website" placeholder="Website" name="confirmNewPassword" [(ngModel)]="userProfile.website" #website="ngModel" >
+      </div>
+      <div class="form-group">
+        <label for="website">Phone</label>
+        <input type="text" class="form-control" id="phone" placeholder="Phone number" name="phone" [(ngModel)]="userProfile.phone" #phone="ngModel" >
+      </div>
+      <hr>
+      <h4>Address</h4>
+      <div class="form-group">
+        <label for="state">State</label>
+        <input type="text" class="form-control" id="state" placeholder="State" name="state" [(ngModel)]="userProfile.address.state" #state="ngModel" >
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" placeholder="City" name="phone" [(ngModel)]="userProfile.address.city" #city="ngModel" >
+      </div>
+      <div class="form-group">
+        <label for="zip">Website</label>
+        <input type="text" class="form-control" id="zip" placeholder="Website" name="confirmNewPassword" [(ngModel)]="userProfile.address.zip" #zip="ngModel" >
+      </div>
+      <hr>
+      <h4>Social Ranks</h4>
+      <div class="form-group">
+        <label for="stars">Stars</label>
+        <input type="number" class="form-control" id="stars" min="0" max="5" placeholder="Stars" name="stars" [(ngModel)]="userProfile.stars" #stars="ngModel" >
+      </div>
+      <div class="form-group">
+        <label for="reviewsCount">Reviews Count</label>
+        <input type="number" class="form-control" id="reviewsCount" min="0" placeholder="Reviews Count" name="reviewsCount" [(ngModel)]="userProfile.reviewsCount" #reviewsCount="ngModel" >
+      </div>
+      <div class="form-group">
+        <label for="followersCount">Followers Count</label>
+        <input type="number" class="form-control" id="followersCount" min="0" placeholder="Followers Count" name="followersCount" [(ngModel)]="userProfile.followersCount" #followersCount="ngModel" >
+      </div>
+
+      <div class="form-group">
+        <button [disabled]="!f.valid" type="submit" class="btn btn-success">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

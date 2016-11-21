@@ -4,16 +4,24 @@
   </div>
   <div class="panel-body">
     <div class="row">
-      <button class="btn btn-default pull-right col-xs-2 col-md-1 col-lg-1" [routerLink]="['/login']">   Logout   </button>
-      <div class="col-xs-2 col-md-1 col-lg-1 pull-right"></div>
+      <div class="alert alert-danger col-xs-8 col-md-8 col-lg-8" *ngIf="apiFailed">
+        <strong>Error!</strong> Error while collecting data from API<br>
+        Please, start REST API server at API folder with <code>npm start</code>
+      </div>
+      <button class="btn btn-default btn-lg logout pull-right" [routerLink]="['/login']">Logout</button>
     </div>
-    <div *ngIf="userProfile" class="row">
+    <div class="row">
       <div class="col-md-4 col-xs-6">
         <div class="user" style="background-image:url('http://iconizer.net/files/Practika/orig/user.png')"></div>
       </div>
       <div class="col-md-4 col-xs-6">
         <h3>{{userProfile.firstName}} {{userProfile.lastName}}</h3>
+        <span><img src="../icons/svg/house.svg" class="icon pull-left"><p class="pull-left">{{userProfile.address?.state}}, {{userProfile.address?.city}} {{userProfile.address?.zip}}</p></span>
+        <br>
+        <br>
         <span><img src="../icons/svg/phone-call.svg" class="icon pull-left"></span><p class="pull-left">{{userProfile.phone}}</p>
+        <br>
+        <br>
         <span><img src="../icons/svg/facebook-placeholder-for-locate-places-on-maps.svg" class="icon pull-left"></span><p class="pull-left">{{userProfile.website}}</p>
       </div>
       <div class="col-md-4 col-xs-12" id="rating">
@@ -23,7 +31,8 @@
                 [float]="true"
                 [titles]="['one', 'two', 'three', 'four', 'five']">
         </rating>
-        <h4>10 reviews</h4>
+        <h4>{{userProfile.reviewsCount}} reviews</h4>
+        <h4>{{userProfile.followersCount}} followers</h4>
       </div>
       <div class="col-xs-1 col-md-1 col-lg-1"></div>
     </div>

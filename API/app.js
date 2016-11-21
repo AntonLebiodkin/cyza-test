@@ -146,7 +146,9 @@ router.patch('/api/v1/profile', function (req, res, next) {
     profile.phone = req.body.phone;
   }
 
-  return res.sendStatus(204);
+  return res.json({
+    "success": "true"
+  });
 });
 
 router.put('/api/v1/profile/changepassword', function (req, res, next) {
@@ -172,7 +174,6 @@ router.put('/api/v1/profile/changepassword', function (req, res, next) {
   }
 
   if (req.body.oldPassword !== user.password) {
-    res.status(400);
     return res.json({
       "error": "incorrect_old_password",
       "error_description": "Old password is incorrect."
@@ -180,8 +181,10 @@ router.put('/api/v1/profile/changepassword', function (req, res, next) {
   }
 
   user.password = req.body.newPassword;
+  return res.json({
+    "success": "true"
+  });
 
-  return res.sendStatus(204);
 });
 
 app.use('/', router);

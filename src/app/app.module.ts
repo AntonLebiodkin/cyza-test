@@ -5,16 +5,19 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
+
 import { ProfileHeaderComponent } from './components/profile/profile-header/profile-header.component';
 import { ProfileInfoComponent } from './components/profile/profile-info/profile-info.component';
 import { ProfileSettingsComponent } from './components/profile/profile-settings/profile-settings.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileEditComponent } from './components/profile/profile-edit/profile-edit.component';
+import { ProfileService } from "./services/profile.service";
+
 import { CyzaTestRoutingModule } from './app-routing.module';
 import { RatingModule } from "ng2-rating";
-import { ProfileService } from "./services/profile.service";
+
 import { AuthService } from "./services/auth.service";
-import {AuthGuard} from "./guards/auth-guard.service";
-import {EqualValidator} from "./directives/validate-equal";
+import { AuthGuard } from "./guards/auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -24,7 +27,7 @@ import {EqualValidator} from "./directives/validate-equal";
     ProfileInfoComponent,
     ProfileSettingsComponent,
     ProfileComponent,
-    EqualValidator
+    ProfileEditComponent
   ],
   imports: [
     BrowserModule,
